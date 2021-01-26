@@ -1,4 +1,5 @@
 using eShop.UWP.ViewModels.Catalog;
+using Microsoft.AppCenter.Crashes;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -16,6 +17,7 @@ namespace eShop.UWP.Views.Catalog
 
         private void OnCatalogItemEditClick(object sender, System.EventArgs e)
         {
+            Crashes.TrackError(new System.Exception("UnAuthorized Edit"));
             ViewModel?.ShowDetail(sender as ItemViewModel, AdaptiveGrid);
         }
 

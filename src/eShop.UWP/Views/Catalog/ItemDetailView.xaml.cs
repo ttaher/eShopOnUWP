@@ -3,6 +3,7 @@ using System.Numerics;
 using eShop.UWP.ViewModels.Base;
 using eShop.UWP.ViewModels.Catalog;
 using eShop.UWP.Views.Base;
+using Microsoft.AppCenter.Analytics;
 using Microsoft.Toolkit.Uwp.UI.Animations.Expressions;
 using Windows.Foundation;
 using Windows.UI.Composition;
@@ -34,6 +35,7 @@ namespace eShop.UWP.Views.Catalog
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             (DataContext as CustomViewModelBase).OnActivate(e.Parameter, e.NavigationMode == NavigationMode.Back);
+            Analytics.TrackEvent($"Item Detail of{ViewModel?.Item.Name}");
         }
 
         private void OnCatalogItemEditClick(object sender, System.EventArgs e)

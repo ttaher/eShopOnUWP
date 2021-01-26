@@ -10,6 +10,9 @@ using Windows.ApplicationModel.VoiceCommands;
 using Windows.Foundation;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace eShop.UWP
 {
@@ -29,7 +32,7 @@ namespace eShop.UWP
         public App()
         {
             InitializeComponent();
-
+            
             //Deferred execution until used. Check https://msdn.microsoft.com/library/dd642331(v=vs.110).aspx for further info on Lazy<T> class.
             _activationService = new Lazy<ActivationService>(CreateActivationService);
 
@@ -37,6 +40,8 @@ namespace eShop.UWP
             ApplicationView.PreferredLaunchViewSize = new Size(1200, 800);
 
             HockeyClient.Current.Configure(Constants.HockeyAppID);
+            AppCenter.Start("43b08b68-79f2-437c-999d-ff4725fa76f4",
+                       typeof(Analytics), typeof(Crashes));
         }
 
         /// <summary>

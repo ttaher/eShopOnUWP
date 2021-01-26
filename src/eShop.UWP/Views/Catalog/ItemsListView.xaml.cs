@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using eShop.UWP.Helpers;
 using eShop.UWP.ViewModels.Catalog;
+using Microsoft.AppCenter.Crashes;
 using Telerik.UI.Xaml.Controls.Grid;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -64,6 +65,7 @@ namespace eShop.UWP.Views.Catalog
 
         private void OnSelectAllClick(object sender, RoutedEventArgs e)
         {
+            Crashes.GenerateTestCrash();
             DataGrid.SelectAll();
         }
 
